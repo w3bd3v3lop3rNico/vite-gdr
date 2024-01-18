@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .character-card {
-  background: url(../../public/card-bg.jpg);
+  background: url(card-bg.jpg);
   background-size: cover;
   background-color: rgb(62, 62, 75);
   color: rgba(255, 255, 255, 0.9);

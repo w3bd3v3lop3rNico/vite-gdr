@@ -1,26 +1,30 @@
 <template>
   <div class="character-card">
     <div>
-      <div class="card-text name">{{ character.name }}</div>
-      <div class="card-text character-class">{{ character.type.name }}</div>
+      <p class="card-text name">{{ character.name }}</p>
+      <p class="card-text character-class">{{ character.type.name }}</p>
     </div>
 
     <div class="card-text bio">{{ character.bio }}</div>
 
-    <div class="card-stats">
-      <div class="card-text hp">
+    <ul class="items">
+      <li class="item" v-for="item in character.items">{{ item.name }}</li>
+    </ul>
+
+    <ul class="card-stats">
+      <li class="card-text hp">
         <span class="stats">HP </span>{{ character.hp }}
-      </div>
-      <div class="card-text atk">
+      </li>
+      <li class="card-text atk">
         <span class="stats">ATK </span>{{ character.attack }}
-      </div>
-      <div class="card-text def">
+      </li>
+      <li class="card-text def">
         <span class="stats">DEF </span>{{ character.defense }}
-      </div>
-      <div class="card-text spd">
+      </li>
+      <li class="card-text spd">
         <span class="stats">SPD </span>{{ character.speed }}
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -45,58 +49,20 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 30px;
+  gap: 8px;
 
   overflow: hidden;
   padding: 50px 30px;
 
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  box-shadow: 10px 10px 15px -3px rgba(0, 0, 0, 0.25);
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-  outline: 0px solid;
-  transition: 100ms all;
+  outline: 6px solid rgba(93, 197, 136, 0.24);
+  transition: 300ms all;
 
   &:hover {
-    outline: 6px solid rgba(105, 255, 143, 0.8);
+    outline: 6px solid rgba(86, 202, 167, 0.8);
     box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.25);
-  }
-
-  .card-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    // justify-content: space-evenly;
-    // flex-grow: 1;
-    text-align: center;
-    font-size: 20px;
-    // font-weight: 300;
-
-    .card-text {
-      position: relative;
-      width: 60%;
-      margin: 0 auto;
-
-      .stats {
-        position: absolute;
-        top: 4px;
-        left: 0;
-        font-size: 12px;
-        font-weight: 700;
-        margin-right: 10px;
-      }
-    }
-
-    // .card-text::after {
-    //   content: "";
-    //   display: block;
-    //   width: 100%;
-    //   margin-block: 10px;
-    //   height: 1px;
-    //   background-color: rgba(255, 255, 255, 0.3);
-    // }
-
-    // .card-text:last-child::after {
-    //   display: none;
-    // }
   }
 
   .card-text {
@@ -121,8 +87,66 @@ export default {
       border-left: 2px solid rgba(255, 255, 255, 0.3);
       padding: 0px 10px;
       min-height: 50px;
-      max-height: 100px;
+      max-height: 88px;
       overflow: auto;
+    }
+  }
+
+  .items {
+    // border: 2px solid;
+    // text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+    gap: 8px;
+    .item {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 6px;
+      box-shadow: 10px 10px 13px rgba(0, 0, 0, 0.1);
+      transition: 300ms all;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+    }
+  }
+
+  .card-stats {
+    // display: flex;
+    // flex-direction: column;
+    // gap: 4px;
+    // justify-content: space-evenly;
+    // flex-grow: 1;
+    text-align: center;
+    font-size: 18px;
+    // font-weight: 300;
+
+    .card-text {
+      position: relative;
+      width: 60%;
+      margin: 0 auto;
+
+      .stats {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        font-size: 12px;
+        font-weight: 700;
+        margin-right: 10px;
+      }
+    }
+
+    .card-text::after {
+      content: "";
+      display: block;
+      width: 100%;
+      margin-block: 5px;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .card-text:last-child::after {
+      display: none;
     }
   }
 }
